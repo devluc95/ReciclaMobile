@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons"; // Importando ícones
 import { useSaldoViewModel } from "../viewmodels/SaldoViewModel";
 
 export default function SaldoScreen() {
@@ -9,6 +10,11 @@ export default function SaldoScreen() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
+        {/* Botão de seta voltar */}
+        <TouchableOpacity style={styles.backButton} onPress={() => { /* ação futura */ }}>
+          <Ionicons name="arrow-back" size={24} color="#fff" />
+        </TouchableOpacity>
+
         <Image source={require("../../assets/logo.png")} style={styles.logo} />
         <View style={{ marginLeft: 8 }}>
           <Text style={styles.headerTitle}>Recicla Fácil</Text>
@@ -56,6 +62,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 24,
     marginTop: 45,
+  },
+  backButton: {
+    marginRight: 12,
   },
   logo: {
     width: 32,
