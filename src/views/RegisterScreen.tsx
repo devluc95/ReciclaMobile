@@ -23,7 +23,7 @@ export default function RegisterScreen() {
         keyboardType="email-address"
       />
 
-      <Text style={styles.label}>Password</Text>
+      <Text style={styles.label}>Senha</Text>
       <TextInput
         style={styles.input}
         placeholder="***********"
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B5E20",
     padding: 20,
   },
+  
   logoContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -75,11 +76,12 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     color: "#fff",
     marginBottom: 5,
-    marginTop: 20,
-    marginLeft: 35,
+    marginTop: 10,
+    marginLeft: 25,
   },
   input: {
-    width: "80%",
+    width: "90%",
+    height: 45,
     backgroundColor: "#fff",
     borderRadius: 8,
     padding: 10,
@@ -90,8 +92,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-start",
     marginBottom: 20,
-    marginTop: 15,
-    marginLeft: 35,
+    marginTop: 10,
+    marginLeft: 25,
   },
   checkboxLabel: {
     marginLeft: 8,
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 8,
-    width: "80%",
+    width: "90%",
     alignItems: "center",
     marginTop: 5,
   },

@@ -12,6 +12,7 @@ import {
   Image,
 } from "react-native";
 import { useLoginViewModel } from "../viewmodels/LoginViewsModel";
+import { useNavigation } from "@react-navigation/native"; // 🚀 usar React Navigation
 
 export default function LoginScreen() {
   const {
@@ -21,9 +22,10 @@ export default function LoginScreen() {
     loading,
     error,
     handleLogin,
-    handleRegister,
     handleForgotPassword,
   } = useLoginViewModel();
+
+  const navigation = useNavigation(); // 🚀 instancia de navegação
 
   return (
     <KeyboardAvoidingView
@@ -35,7 +37,7 @@ export default function LoginScreen() {
         {/* Logo */}
         <Image
           source={require("../../assets/logo.png")}
-          style={styles.logoSmall} // tamanho ajustado para caber ao lado do texto
+          style={styles.logoSmall}
           resizeMode="contain"
         />
 
@@ -44,12 +46,26 @@ export default function LoginScreen() {
       </View>
 
       {/* Campo de Email com rótulo */}
-      <View style={{ width: "80%", marginBottom: 15, alignSelf: "center", margin: 25, }}>
-        <Text style={{ color: "#fff", marginBottom: 10, fontSize: 14, textAlign: "left" }}>
+      <View
+        style={{
+          width: "80%",
+          marginBottom: 15,
+          alignSelf: "center",
+          margin: 25,
+        }}
+      >
+        <Text
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+            fontSize: 14,
+            textAlign: "left",
+          }}
+        >
           E-mail
         </Text>
         <TextInput
-          style={[styles.input, { width: "100%" }]} // largura do input ajustada
+          style={[styles.input, { width: "100%" }]}
           placeholder="seu@email.com"
           value={user.email}
           onChangeText={setEmail}
@@ -60,7 +76,15 @@ export default function LoginScreen() {
 
       {/* Campo de Senha com rótulo */}
       <View style={{ width: "80%", marginBottom: 15, alignSelf: "center" }}>
-        <Text style={{ color: "#fff", marginBottom: 5, fontSize: 14, margin: 5, textAlign: "left" }}>
+        <Text
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+            fontSize: 14,
+            margin: 5,
+            textAlign: "left",
+          }}
+        >
           Senha
         </Text>
         <TextInput
@@ -78,7 +102,7 @@ export default function LoginScreen() {
       {/* Botão de Login */}
       <TouchableOpacity
         style={styles.button}
-        onPress={handleLogin}
+        onPress={() => navigation.navigate("Saldo")}
         disabled={loading}
       >
         {loading ? (
@@ -89,7 +113,10 @@ export default function LoginScreen() {
       </TouchableOpacity>
 
       {/* Registrar */}
-      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+      <TouchableOpacity
+        style={styles.registerButton}
+        onPress={() => navigation.navigate("Register")} // 🚀 navegação para RegisterScreen
+      >
         <Text style={styles.registerText}>Criar conta</Text>
       </TouchableOpacity>
 
@@ -110,23 +137,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 1,
   },
   logoTitleContainer: {
-    flexDirection: "row", // coloca logo e título lado a lado
-    alignItems: "center", // alinha verticalmente
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 20,
   },
   logoSmall: {
-    width: 60,
-    height: 60,
-    marginRight: 10, // espaço entre logo e título
+    width: 70,
+    height: 70,
+    marginRight: 10,
   },
-  title: { color: "#fff", fontSize: 24, fontWeight: "bold" },
+  title: { color: "#fff", fontSize: 28, fontWeight: "bold" },
   input: {
     backgroundColor: "#fff",
     borderRadius: 10,
     paddingVertical: 12,
     paddingHorizontal: 15,
     fontSize: 16,
-    width: "100%", // largura agora 100% do container
+    width: "100%",
   },
   button: {
     backgroundColor: "#fff",
@@ -138,8 +165,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: { color: "#1B5E20", fontSize: 16, fontWeight: "bold" },
-  registerButton: { paddingVertical: 12, alignItems: "center", marginBottom: 10 },
+  registerButton: {
+    paddingVertical: 12,
+    alignItems: "center",
+    marginBottom: 10,
+  },
   registerText: { color: "#fff", fontSize: 16, fontWeight: "600" },
-  forgotText: { color: "#BDBDBD", fontSize: 14, textAlign: "center", marginTop: 5 },
+  forgotText: {
+    color: "#BDBDBD",
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: 5,
+  },
   error: { color: "red", textAlign: "center", marginBottom: 10 },
 });

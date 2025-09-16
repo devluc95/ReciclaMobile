@@ -35,6 +35,13 @@ export default function ExtratoScreen({ navigation }) {
           <Text style={styles.headerTitle}>Recicla Fácil</Text>
           <Text style={styles.headerSubtitle}>Histórico de Atividades</Text>
         </View>
+
+        <TouchableOpacity 
+          style={styles.menuButton} 
+          onPress={() => navigation.navigate('Menu')}
+        >
+          <Ionicons name="menu" size={28} color="#fff" />
+        </TouchableOpacity>
       </View>
 
       {/* Lista */}
@@ -56,26 +63,32 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 15,
+    padding: 25,
     backgroundColor: "#1B5E20",
-    marginTop: 45,
+    marginTop: 18,
   },
   backButton: {
-    marginRight: 12,
+    marginRight: 10,
+    marginLeft: -10,
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     resizeMode: "contain",
   },
   headerTitle: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
   },
   headerSubtitle: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 12,
+  },
+    menuButton: {
+    marginLeft: 'auto',
+    marginRight: 0,
+    padding: 8,
   },
   listContainer: {
     padding: 20,
@@ -86,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#3C6E47",
     borderRadius: 12,
-    padding: 15,
+    padding: 10,
     marginVertical: 8,
   },
   info: {

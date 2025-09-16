@@ -1,10 +1,19 @@
 // src/views/WelcomeScreen.tsx
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from "react-native";
-import { useWelcomeViewModel } from "../viewmodels/WelcomeViewModel";
+import { useNavigation } from "@react-navigation/native";
 
 export default function WelcomeScreen() {
-  const { loading, handleStart } = useWelcomeViewModel();
+  const navigation = useNavigation();
+  const [loading, setLoading] = React.useState(false);
+
+  const handleStart = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigation.navigate("Login"); // 👉 leva para a tela Login
+    }, 800); // só para simular carregamento
+  };
 
   return (
     <View style={styles.container}>
@@ -12,7 +21,7 @@ export default function WelcomeScreen() {
       <View style={styles.logoContainer}>
         <View style={styles.logoBox}>
           <Image
-            source={require("../../assets/logo.png")} // coloque sua logo em assets
+            source={require("../../assets/logo.png")}
             style={styles.logo}
             resizeMode="contain"
           />
@@ -54,9 +63,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   logo: {
-    width: 140,
-    height: 140,
-    tintColor: "",
+    width: 110,
+    height: 110,
   },
   line: {
     width: 150,

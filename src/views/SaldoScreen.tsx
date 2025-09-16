@@ -1,25 +1,35 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // Importando ícones
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useSaldoViewModel } from "../viewmodels/SaldoViewModel";
+import { useNavigation } from "@react-navigation/native"; // Import navigation
 
 export default function SaldoScreen() {
   const { saldo } = useSaldoViewModel();
+  const navigation = useNavigation(); // Instanciação do navigation
 
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        {/* Botão de seta voltar */}
-        <TouchableOpacity style={styles.backButton} onPress={() => { /* ação futura */ }}>
-          <Ionicons name="arrow-back" size={24} color="#fff" />
-        </TouchableOpacity>
-
         <Image source={require("../../assets/logo.png")} style={styles.logo} />
         <View style={{ marginLeft: 8 }}>
           <Text style={styles.headerTitle}>Recicla Fácil</Text>
           <Text style={styles.headerSubtitle}>Saldo</Text>
         </View>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => navigation.navigate("Menu")}
+        >
+          <Ionicons name="menu" size={28} color="#fff" />
+        </TouchableOpacity>
       </View>
 
       {/* Saldo */}
@@ -40,10 +50,16 @@ export default function SaldoScreen() {
 
       {/* Botões */}
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Extrato")} // Navega para Extrato
+        >
           <Text style={styles.buttonText}>Ver Histórico</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Profile")} // Navega para Profile
+        >
           <Text style={styles.buttonText}>Ver Perfil</Text>
         </TouchableOpacity>
       </View>
@@ -61,10 +77,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 24,
-    marginTop: 45,
+    marginTop: 25,
   },
-  backButton: {
-    marginRight: 12,
+  menuButton: {
+    marginLeft: 'auto',
+    marginRight: 0,
+    padding: 8,
   },
   logo: {
     width: 32,
@@ -84,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
     marginBottom: 4,
-    marginTop: 55,
+    marginTop: 85,
   },
   saldoValor: {
     color: "#fff",
