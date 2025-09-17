@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_BG,
     alignItems: 'center',
-    paddingTop: 35,
-    paddingHorizontal: 20,
+    padding: 10,
+    paddingTop: 45,
+    paddingHorizontal: 10,
   },
   header: {
     width: '100%',

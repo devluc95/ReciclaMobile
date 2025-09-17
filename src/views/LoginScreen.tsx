@@ -28,18 +28,11 @@ export default function LoginScreen() {
   const navigation = useNavigation(); // 🚀 instancia de navegação
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       {/* Container da logo e do título */}
       <View style={styles.logoTitleContainer}>
         {/* Logo */}
-        <Image
-          source={require("../../assets/logo.png")}
-          style={styles.logoSmall}
-          resizeMode="contain"
-        />
+        <Image source={require("../../assets/logo.png")} style={styles.logoSmall} resizeMode="contain" />
 
         {/* Título */}
         <Text style={styles.title}>Recicla Fácil</Text>

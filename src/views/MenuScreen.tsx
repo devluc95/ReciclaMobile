@@ -28,7 +28,7 @@ export default function MenuScreen() {
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Image source={logo} style={styles.smallLogo} />
-        <View style={{ marginLeft: 8 }}>
+        <View style={{ marginLeft: 10 }}>
           <Text style={styles.headerTitle}>Recicla Fácil</Text>
           <Text style={styles.headerSubtitle}>Menu</Text>
         </View>
@@ -73,13 +73,13 @@ export default function MenuScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#1B5E20", alignItems: "center", padding: 20 },
+  container: { flex: 1, backgroundColor: "#1B5E20", alignItems: "center", padding: 10 },
   header: {
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "flex-start",
     marginBottom: 20,
-    marginTop: 20,
+    marginTop: 30,
   },
   backButton: {
     paddingRight: 10,

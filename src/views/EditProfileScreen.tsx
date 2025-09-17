@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const EditProfileScreen: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [bio, setBio] = useState('');
+  const navigation = useNavigation();
 
-  const avatar = require('../../assets/avatar-placeholder.png'); // Ajuste o caminho
+  const avatar = require('../../assets/avatar-placeholder.png');
 
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => { /* ação voltar */ }}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.navigate('Profile')}
+        >
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Image source={require('../../assets/logo.png')} style={styles.smallLogo} />
@@ -75,14 +80,14 @@ const EditProfileScreen: React.FC = () => {
         />
       </View>
 
-      <TouchableOpacity style={styles.saveButton}>
+      <TouchableOpacity style={styles.saveButton} onPress={() => navigation.navigate('Profile')}>
         <Text style={styles.saveButtonText}>Salvar</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-const COLOR_BG = '#316241';
+const COLOR_BG = '#1B5E20';
 const COLOR_BTN = '#fff';
 const COLOR_BTN_TEXT = '#316241';
 const COLOR_TITLE = '#fff';
@@ -93,14 +98,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_BG,
     alignItems: 'center',
-    paddingTop: 48,
+    paddingTop: 30,
     paddingHorizontal: 20,
   },
   header: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 8,
   },
   backButton: {
     paddingRight: 10,
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
   headerSubtitle: {
     color: COLOR_SUBTITLE,
     fontSize: 13,
-    marginTop: 2,
+    marginTop: 0,
   },
   avatarContainer: {
     alignItems: 'center',
@@ -135,25 +140,25 @@ const styles = StyleSheet.create({
   },
   changePhotoButton: {
     borderWidth: 1,
-    borderColor: '#364c39',
+    borderColor: '#fff',
     borderRadius: 8,
     paddingVertical: 7,
     paddingHorizontal: 32,
     alignSelf: 'center',
-    marginBottom: 18,
+    marginBottom: 1,
   },
   changePhotoText: {
-    color: '#364c39',
+    color: '#fff',
     fontSize: 16,
   },
   form: {
     width: '100%',
-    marginBottom: 15,
+    marginBottom: 5,
   },
   label: {
     color: COLOR_TITLE,
     fontWeight: '500',
-    marginTop: 10,
+    marginTop: 5,
     marginBottom: 2,
   },
   input: {
