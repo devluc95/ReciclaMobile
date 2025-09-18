@@ -43,7 +43,7 @@ const FollowInstagramScreen: React.FC = () => {
   );
 };
 
-const COLOR_BG = '#316241';
+const COLOR_BG = '#1B5E20';
 const COLOR_BTN_FILLED = '#fff';
 const COLOR_BTN_OUTLINE = '#316241';
 const COLOR_BTN_TEXT_FILLED = '#316241';

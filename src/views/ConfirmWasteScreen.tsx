@@ -1,105 +1,125 @@
-// src/views/ConfirmWasteScreen.js
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
-export default function ConfirmWasteScreen() {
+const ConfirmWasteScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      {/* Ícone de check */}
-      <View style={styles.iconContainer}>
-        <Ionicons name="checkmark-circle-outline" size={80} color="#fff" />
+      <View style={styles.iconBox}>
+        <Ionicons
+          name="checkmark-circle"
+          size={82}
+          color="#fff"
+        />
       </View>
-
-      {/* Título */}
       <Text style={styles.title}>Resíduo Cadastrado!</Text>
-
-      {/* Card com informações */}
       <View style={styles.infoCard}>
-        <Text style={styles.infoText}>kg</Text>
-        <Text style={styles.infoText}>+R$</Text>
+        <Text style={styles.infoKg}>kg</Text>
+        <Text style={styles.infoValue}>+R$</Text>
       </View>
-
-      {/* Texto explicativo */}
-      <Text style={styles.subtitle}>
-        Parabéns, você contribuiu para um mundo mais sustentável!
-      </Text>
-
-      {/* Botão principal */}
-      <TouchableOpacity style={styles.primaryButton}>
+      <Text style={styles.subtitle}>Parabéns, você contribuiu para um mundo mais sustentável!</Text>
+      <TouchableOpacity
+        style={styles.primaryButton}
+        onPress={() => navigation.navigate('Saldo')}
+      >
         <Text style={styles.primaryText}>Ver saldo atualizado</Text>
       </TouchableOpacity>
-
-      {/* Botão secundário */}
-      <TouchableOpacity style={styles.secondaryButton}>
+      <TouchableOpacity
+        style={styles.secondaryButton}
+        onPress={() => navigation.navigate('Extrato')}
+      >
         <Text style={styles.secondaryText}>Ver Histórico</Text>
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1B5E20",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
+    backgroundColor: '#1B5E20',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 12,
   },
-  iconContainer: {
-    marginBottom: 20,
+  iconBox: {
+    marginBottom: 14,
+    marginTop: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 22,
-    color: "#fff",
-    fontWeight: "bold",
-    marginBottom: 20,
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginBottom: 22,
+    textAlign: 'center',
+    letterSpacing: 0.2,
   },
   infoCard: {
-    backgroundColor: "#336E4C",
-    borderRadius: 12,
-    paddingVertical: 25,
-    paddingHorizontal: 40,
-    marginBottom: 20,
-    width: "80%",
-    alignItems: "center",
+    backgroundColor: '#6da486',
+    borderRadius: 15,
+    width: '78%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 30,
+    marginBottom: 13,
   },
-  infoText: {
+  infoKg: {
     fontSize: 20,
-    color: "#fff",
-    marginBottom: 5,
-    fontWeight: "500",
+    color: '#fff',
+    marginBottom: 8,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+  },
+  infoValue: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '600',
+    letterSpacing: 0.2,
   },
   subtitle: {
-    fontSize: 14,
-    color: "#fff",
-    textAlign: "center",
-    marginBottom: 40,
+    fontSize: 13,
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: 36,
+    marginTop: 4,
+    fontWeight: '500',
+    lineHeight: 18,
+    opacity: 0.94,
   },
   primaryButton: {
-    backgroundColor: "#fff",
-    paddingVertical: 14,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    marginBottom: 15,
-    width: "80%",
-    alignItems: "center",
+    backgroundColor: '#fff',
+    paddingVertical: 12,
+    borderRadius: 10,
+    width: '78%',
+    alignItems: 'center',
+    marginBottom: 16,
+    elevation: 2,
   },
   primaryText: {
-    color: "#1B5E20",
+    color: '#276846',
+    fontWeight: 'bold',
     fontSize: 16,
-    fontWeight: "bold",
+    letterSpacing: 0.1,
   },
   secondaryButton: {
-    borderWidth: 1,
-    borderColor: "#2E7D32",
-    paddingVertical: 14,
-    borderRadius: 8,
-    width: "80%",
-    alignItems: "center",
+    borderWidth: 1.5,
+    borderColor: '#5b7c6e',
+    paddingVertical: 12,
+    borderRadius: 10,
+    width: '78%',
+    alignItems: 'center',
+    marginBottom: 0,
   },
   secondaryText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 16,
+    fontWeight: '500',
   },
 });
+
+export default ConfirmWasteScreen;
