@@ -1,23 +1,22 @@
 // src/views/WelcomeScreen.tsx
+
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
-export default function WelcomeScreen() {
-  const navigation = useNavigation();
+export default function WelcomeScreen({ navigation }: any) {
   const [loading, setLoading] = React.useState(false);
 
   const handleStart = () => {
     setLoading(true);
+    // Simule algum processo, depois navegue
     setTimeout(() => {
       setLoading(false);
-      navigation.navigate("Login"); // 👉 leva para a tela Login
-    }, 800); // só para simular carregamento
+      navigation.navigate("Login");
+    }, 1000);
   };
 
   return (
     <View style={styles.container}>
-      {/* Ícone central */}
       <View style={styles.logoContainer}>
         <View style={styles.logoBox}>
           <Image
@@ -28,10 +27,11 @@ export default function WelcomeScreen() {
         </View>
       </View>
 
-      {/* Linha */}
       <View style={styles.line} />
 
-      {/* Botão */}
+      <Text style={styles.appTitle}>Planeta Verde</Text>
+      <Text style={styles.appSubtitle}>Seu parceiro em sustentabilidade</Text>
+
       <TouchableOpacity style={styles.button} onPress={handleStart} disabled={loading}>
         {loading ? (
           <ActivityIndicator color="#2E7D32" />
@@ -51,27 +51,46 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoContainer: {
-    marginBottom: 40,
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 24,
+    borderBottomLeftRadius: 24,
+    borderTopRightRadius: 24,
+    borderBottomRightRadius: 0,
+    width: 120,
+    height: 120,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+    marginBottom: 22,
   },
   logoBox: {
     width: 100,
     height: 100,
-    backgroundColor: "#1B5E20",
-    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    elevation: 5,
   },
   logo: {
-    width: 110,
-    height: 110,
+    width: 80,
+    height: 80,
   },
   line: {
-    width: 150,
-    height: 4,
+    width: 80,
+    height: 3,
     backgroundColor: "#BDBDBD",
     borderRadius: 2,
-    marginVertical: 30,
+    marginVertical: 24,
+  },
+  appTitle: {
+    color: "#fff",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 7,
+  },
+  appSubtitle: {
+    color: "#d6eedb",
+    fontSize: 14,
+    textAlign: "center",
   },
   button: {
     backgroundColor: "#fff",
@@ -79,10 +98,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 10,
     elevation: 2,
+    marginTop: 60,
   },
   buttonText: {
-    color: "#1B5E20",
-    fontSize: 16,
+    color: "#2E6136",
+    fontSize: 18,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });

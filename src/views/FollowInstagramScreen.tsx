@@ -1,15 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const FollowInstagramScreen: React.FC = () => {
   const logo = require('../../assets/logo.png');
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => { /* ação voltar */ }}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Image source={logo} style={styles.smallLogo} />
@@ -17,7 +19,7 @@ const FollowInstagramScreen: React.FC = () => {
           <Text style={styles.headerTitle}>Recicla Fácil</Text>
           <Text style={styles.headerSubtitle}>Seguir agora</Text>
         </View>
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate('Menu')}>
           <Ionicons name="menu" size={28} color="#fff" />
         </TouchableOpacity>
       </View>
@@ -36,7 +38,7 @@ const FollowInstagramScreen: React.FC = () => {
       <TouchableOpacity style={styles.buttonFilled} onPress={() => Linking.openURL('https://instagram.com')}>
         <Text style={styles.buttonFilledText}>Seguir agora</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonOutlined}>
+      <TouchableOpacity style={styles.buttonOutlined} onPress={() => navigation.navigate('Profile')}>
         <Text style={styles.buttonOutlinedText}>Pular por agora</Text>
       </TouchableOpacity>
     </View>

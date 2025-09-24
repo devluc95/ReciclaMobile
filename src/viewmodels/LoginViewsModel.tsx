@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 export function useLoginViewModel() {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ matricula: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const setEmail = (email) => setUser((prev) => ({ ...prev, email }));
+  const setMatricula = (matricula) => setUser((prev) => ({ ...prev, matricula }));
   const setPassword = (password) => setUser((prev) => ({ ...prev, password }));
 
   const handleLogin = () => {
@@ -15,10 +15,10 @@ export function useLoginViewModel() {
     // Simulando login com delay
     setTimeout(() => {
       setLoading(false);
-      if (user.email === "teste@email.com" && user.password === "123456") {
+      if (user.matricula === "999999-0" && user.password === "123456") {
         alert("Login bem-sucedido!");
       } else {
-        setError("Email ou senha incorretos");
+        setError("Matrícula ou senha incorretos");
       }
     }, 1500);
   };
@@ -27,5 +27,5 @@ export function useLoginViewModel() {
     alert("Função de recuperação de senha!");
   };
 
-  return { user, setEmail, setPassword, loading, error, handleLogin, handleForgotPassword };
+  return { user, setMatricula, setPassword, loading, error, handleLogin, handleForgotPassword };
 }

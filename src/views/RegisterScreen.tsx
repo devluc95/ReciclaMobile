@@ -14,13 +14,13 @@ export default function RegisterScreen() {
         <Text style={styles.title}>Recicla Fácil</Text>
       </View>
 
-      <Text style={styles.label}>Email</Text>
+      <Text style={styles.label}>Matrícula</Text>
       <TextInput
         style={styles.input}
-        placeholder="seu@email.com.br"
-        value={form.email}
-        onChangeText={(text) => handleChange("email", text)}
-        keyboardType="email-address"
+        placeholder="999999-0"
+        value={form.matricula}
+        onChangeText={(text) => handleChange("matricula", text)}
+        keyboardType="default"
       />
 
       <Text style={styles.label}>Senha</Text>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B5E20",
     padding: 20,
   },
-  
+
   logoContainer: {
     flexDirection: "row",
     alignItems: "center",
